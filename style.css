@@ -351,17 +351,14 @@ h4 {
     line-height: 30px;
 }
 
-#card-conatiner {
-    height: 70vh;
-    width: 100%;
-    /* background-color: black; */
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 50px;
-    position: relative;
-    z-index: 10;
-    margin-top: 70px;
+#card-conatiner{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    gap:50px;
+    margin-top:70px;
+    flex-wrap:wrap;
 }
 
 .card {
