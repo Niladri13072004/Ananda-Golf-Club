@@ -40,7 +40,7 @@ gsap.from("#about-us img, #about-us-in", {
 
 gsap.from(".card", {
     scale: 0.8,
-    opacity: 0,
+    // opacity: 0,
     duration: 1,
     stagger: 0.1,
     scrollTrigger: {
@@ -86,12 +86,26 @@ gsap.from("#page-4 h1", {
 var cursor = document.querySelector("#cursor");
 var blur = document.querySelector("#cursor-blur");
 
+let cursorX = 0, cursorY = 0;
+let isMoving = false;
+
 document.addEventListener("mousemove", function (e) {
-    cursor.style.left = e.x + "px";
-    cursor.style.top = e.y + "px";
-    blur.style.left = (e.x - 250) + "px";
-    blur.style.top = (e.y - 250) + "px";
-})
+    cursorX = e.clientX;
+    cursorY = e.clientY;
+    
+    if (!isMoving) {
+        requestAnimationFrame(updateCursorPosition);
+        isMoving = true;
+    }
+});
+
+function updateCursorPosition() {
+    cursor.style.left = cursorX + "px";
+    cursor.style.top = cursorY + "px";
+    blur.style.left = (cursorX - 250) + "px";
+    blur.style.top = (cursorY - 250) + "px";
+    isMoving = false;
+}
 
 var h4 = document.querySelectorAll("#nav h4");
 h4.forEach(function (elem) {
@@ -113,19 +127,21 @@ cards.forEach(function (card) {
     });
 
     card.addEventListener("mousemove", function (e) {
-        var rect = card.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
-        var centerX = rect.width / 2;
-        var centerY = rect.height / 2;
-        var rotateX = ((y - centerY) / centerY) * -15;
-        var rotateY = ((x - centerX) / centerX) * 15;
-        card.style.transform = "perspective(1000px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale(1.05)";
+        requestAnimationFrame(() => {
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var centerX = rect.width / 2;
+            var centerY = rect.height / 2;
+            var rotateX = ((y - centerY) / centerY) * -15;
+            var rotateY = ((x - centerX) / centerX) * 15;
+            card.style.transform = "perspective(1000px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale(1.05)";
+        });
     });
 
     card.addEventListener("mouseleave", function () {
         cursor.classList.remove("cursor-card-hover");
-        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.05)";
     });
 })
 
