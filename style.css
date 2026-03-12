@@ -52,7 +52,6 @@ body::-webkit-scrollbar-track {
 #nav {
     height: 50px;
     width: 100%;
-    /* background-color: red; */
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -148,11 +147,13 @@ h4 {
 }
 
 #page1 h1 {
-    font-size: 85px;
+    font-size: 110px;
     font-weight: 900;
     text-align: center;
     margin-top: 20px;
+    line-height: 110px;
     position: relative;
+    z-index: 10;
 }
 
 #page1 h1::before {
@@ -845,10 +846,12 @@ h4 {
 
     /* Page 1 - Hero */
     #page1 h1 {
-        font-size: 60px;
+        font-size: 70px;
+        line-height: 70px;
     }
 
     #page1 h1::before {
+        content: "EAT. DRINK. PLAY.";
         top: -4px;
         left: -4px;
     }
@@ -887,15 +890,37 @@ h4 {
     }
 
     /* Cards */
-    #card-conatiner {
-        gap: 25px;
-        padding: 0 30px;
+    #card-container {
+        gap: 20px;
+        padding: 0 20px;
+        height: 50vh;
+    }
+
+    .card {
+        width: 30%;
+        height: 85%;
     }
 
     .card>h4 {
-        font-size: 18px;
+        font-size: 16px;
         left: 20px;
         bottom: 20px;
+    }
+
+    .overlay h4 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+
+    .overlay p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .overlay {
+        padding: 10px;
+        padding-top: 20px;
     }
 
     /* Green Div */
@@ -933,17 +958,22 @@ h4 {
         line-height: 34px;
     }
 
-    /* Page 4 */
     #page-4 {
-        gap: 30px;
+        gap: 20px;
+        padding: 0 20px;
     }
 
     #page-4 h1 {
         font-size: 55px;
+        text-align: center;
+    }
+
+    .elem {
+        width: 32%;
     }
 
     .elem h2 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     /* Footer */
@@ -980,25 +1010,45 @@ h4 {
 
     /* Nav */
     #nav {
-        padding: 0 15px;
+        padding: 10px 15px;
         gap: 10px;
-        height: 45px;
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     #nav img {
-        height: 30px;
+        height: 35px;
+        margin-top: 0;
     }
 
+    /* Keep text links visible but smaller */
     #nav h4 {
-        font-size: 9px;
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    .nav-buttons {
+        gap: 8px;
+        margin-top: 5px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 10px;
+        border-radius: 15px;
     }
 
     /* Page 1 - Hero */
     #page1 h1 {
-        font-size: 36px;
+        font-size: 45px;
+        line-height: 45px;
     }
 
     #page1 h1::before {
+        content: "EAT. DRINK. PLAY.";
         top: -3px;
         left: -3px;
         -webkit-text-stroke: 1px #95C11E;
@@ -1035,6 +1085,8 @@ h4 {
         padding: 0 20px;
         margin-top: 40px;
         gap: 15px;
+        align-items: center;
+        text-align: center;
     }
 
     #about-us img {
@@ -1057,10 +1109,10 @@ h4 {
     }
 
     /* Cards */
-    #card-conatiner {
+    #card-container {
         flex-direction: column;
         height: auto;
-        gap: 25px;
+        gap: 30px;
         padding: 0 20px;
         margin-top: 40px;
     }
@@ -1077,11 +1129,13 @@ h4 {
     }
 
     .overlay h4 {
-        font-size: 22px;
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 15px;
     }
 
     .overlay p {
-        font-size: 13px;
+        font-size: 14px;
         line-height: 22px;
     }
 
